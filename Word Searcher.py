@@ -1,23 +1,13 @@
-<<<<<<< HEAD
 # Section: Import modules
-=======
-Section: Import modules
->>>>>>> 51350c2a50373a20c29b4766ffde3fa25a0954dc
 
 import numpy as np
 import math
 from copy import copy
 import time
 
-<<<<<<< HEAD
 # Section End
 
 # Section: Data
-=======
-Section End
-
-Section: Data
->>>>>>> 51350c2a50373a20c29b4766ffde3fa25a0954dc
 
 matrix = ["HPMOQFHMQSRMEHBUSLASSIMQ",
           "BSPSIXTRQQGWLABIVYOXNQWN",
@@ -73,11 +63,8 @@ words = ["altar",
 
 # Section End
 
-<<<<<<< HEAD
 # Section: WordSearcher class
 
-=======
->>>>>>> 51350c2a50373a20c29b4766ffde3fa25a0954dc
 class WordSearcher():
 
     def __init__(self, words, matrix, memoize=True, debug=False):
@@ -87,6 +74,16 @@ class WordSearcher():
         self.debug = debug
 
         self.foundLetters = {}
+
+    def run(self):
+        startTime = time.time()
+        foundWords = []
+        for word in self.words:
+            result = self.wordSearch(word, self.matrix)
+            foundWords.append([word, result])
+        endTime = time.time()
+
+        self.outputResult(foundWords, matrix)
 
     # Division: Toggle functions
 
@@ -113,16 +110,6 @@ class WordSearcher():
         return processedMatrix
 
     # Division End
-
-    def run(self):
-        startTime = time.time()
-        foundWords = []
-        for word in self.words:
-            result = self.wordSearch(word, self.matrix)
-            foundWords.append([word, result])
-        endTime = time.time()
-
-        self.outputResult(foundWords, matrix)
 
     # Division: Output functions
 
@@ -267,14 +254,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-<<<<<<< HEAD
 # Section End
-=======
-WS = WordSearcher(words, matrix)
-WS.run()
-WS.memoizeToggle()
-print()
-WS.run()
-
-Section End
->>>>>>> 51350c2a50373a20c29b4766ffde3fa25a0954dc
