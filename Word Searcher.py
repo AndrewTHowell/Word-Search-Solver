@@ -1,7 +1,13 @@
+Section: Import modules
+
 import numpy as np
 import math
 from copy import copy
 import time
+
+Section End
+
+Section: Data
 
 matrix = ["HPMOQFHMQSRMEHBUSLASSIMQ",
           "BSPSIXTRQQGWLABIVYOXNQWN",
@@ -54,6 +60,8 @@ words = ["altar",
          "stoup",
          "tabernacle"
          ]
+
+# Section End
 
 class WordSearcher():
 
@@ -217,3 +225,5 @@ WS.run()
 WS.memoizeToggle()
 print()
 WS.run()
+
+Section End
