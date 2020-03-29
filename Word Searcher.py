@@ -35,8 +35,6 @@ matrix = ["HPMOQFHMQSRMEHBUSLASSIMQ",
           "VFKLBSTXSYZZYXCRDZHYGGMT",
           "YEZAOHENSHQFJDWWKGPMOBMA"]
 
-word = ["missals"]
-
 words = ["altar",
          "ambo",
          "candles",
