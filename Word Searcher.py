@@ -1,7 +1,13 @@
+# Section: Import modules
+
 import numpy as np
 import math
 from copy import copy
 import time
+
+# Section End
+
+# Section: Data
 
 matrix = ["HPMOQFHMQSRMEHBUSLASSIMQ",
           "BSPSIXTRQQGWLABIVYOXNQWN",
@@ -55,6 +61,10 @@ words = ["altar",
          "tabernacle"
          ]
 
+# Section End
+
+# Section: WordSearcher class
+
 class WordSearcher():
 
     def __init__(self, words, matrix, memoize=True, debug=False):
@@ -65,11 +75,17 @@ class WordSearcher():
 
         self.foundLetters = {}
 
+    # Division: Toggle functions
+
     def memoizeToggle(self):
         self.memoize = not self.memoize
 
-    def debug(self, debugBool):
+    def debugToggle(self, debugBool):
         self.debug = debugBool
+
+    # Division End
+
+    # Division: Pre-processing functions
 
     def preprocessWords(self, words):
         processedWords = []
@@ -83,6 +99,8 @@ class WordSearcher():
             processedMatrix.append(list(row.lower()))
         return processedMatrix
 
+    # Division End
+
     def run(self):
         startTime = time.time()
         foundWords = []
@@ -91,6 +109,11 @@ class WordSearcher():
             foundWords.append([word, result])
         endTime = time.time()
 
+        self.outputResult(foundWords, matrix)
+
+    # Division: Output functions
+
+    def outputResults(self, foundWords, matrix):
         self.printMatrix(matrix)
 
         secondsElapsed = endTime - startTime
@@ -149,6 +172,10 @@ class WordSearcher():
                 xDirection = direction[1] + 1
                 print(f"Found '{word}' starting at {startPosition} in a"
                       f"{xDirections[xDirection]}{yDirections[yDirection]} direction")
+
+    # Division End
+
+    # Division: Searching functions
 
     def wordSearch(self, word, matrix):
         if self.debug:
@@ -211,9 +238,20 @@ class WordSearcher():
                     positions.append(np.array((y, x)))
         return positions
 
+    # Division End
 
-WS = WordSearcher(words, matrix)
-WS.run()
-WS.memoizeToggle()
-print()
-WS.run()
+# Section End
+
+# Section: Main function
+
+def main():
+    WS = WordSearcher(words, matrix)
+    WS.run()
+    WS.memoizeToggle()
+    print()
+    WS.run()
+
+if __name__ == "__main__":
+    main()
+
+# Section End
