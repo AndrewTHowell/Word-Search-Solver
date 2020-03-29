@@ -83,7 +83,13 @@ class WordSearcher():
             foundWords.append([word, result])
         endTime = time.time()
 
-        self.outputResult(foundWords, matrix)
+        secondsElapsed = endTime - startTime
+        milsecondsElapsed = secondsElapsed * 1000
+        milsecondsElapsedPerWord = milsecondsElapsed/len(foundWords)
+        print(f"\nWords found in {milsecondsElapsed:.2f} ms")
+        print(f"That's one word every {milsecondsElapsedPerWord:.2f} ms")
+
+        self.outputResults(foundWords, matrix)
 
     # Division: Toggle functions
 
@@ -115,12 +121,6 @@ class WordSearcher():
 
     def outputResults(self, foundWords, matrix):
         self.printMatrix(matrix)
-
-        secondsElapsed = endTime - startTime
-        milsecondsElapsed = secondsElapsed * 1000
-        milsecondsElapsedPerWord = milsecondsElapsed/len(foundWords)
-        print(f"\nWords found in {milsecondsElapsed:.2f} ms")
-        print(f"That's one word every {milsecondsElapsedPerWord:.2f} ms")
 
         self.printFoundWords(foundWords)
 
@@ -246,9 +246,6 @@ class WordSearcher():
 
 def main():
     WS = WordSearcher(words, matrix)
-    WS.run()
-    WS.memoizeToggle()
-    print()
     WS.run()
 
 if __name__ == "__main__":
